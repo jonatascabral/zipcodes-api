@@ -21,7 +21,7 @@ type Config struct {
 
 var database *gorm.DB
 
-func Connect(driver string, config Config) *gorm.DB {
+func Connect(driver string, config *Config) *gorm.DB {
 	var connectionString string
 
 	switch driver {
@@ -61,8 +61,8 @@ func Migrate(models *models.Address) {
 	database.AutoMigrate(&models)
 }
 
-func Init() {
-	config := Config{
+func Init() *Config {
+	config := &Config{
 		User: "root",
 		Port: 3306,
 		Password: "root",
@@ -75,4 +75,6 @@ func Init() {
 	log.Println("Migrating database")
 	Migrate(&models.Address{})
 	log.Println("Database migrated")
+
+	return config
 }

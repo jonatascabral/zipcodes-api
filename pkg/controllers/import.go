@@ -19,7 +19,7 @@ func ImportCsv(writer http.ResponseWriter, request *http.Request) {
 
 	for _, line := range Csv.Data {
 		_, zipcode := line[0], line[1]
-		_, err = rabbitmq.Publish("zipcodes", fmt.Sprintf("{\"zipCode\": \"%s\"}", zipcode))
+		_, err = rabbitmq.Publish("zipcodes", fmt.Sprintf("{\"Code\": \"%s\"}", zipcode))
 		if err != nil {
 			log.Println("Error parsing CSV file", err)
 			http.Error(writer, "Error parsing CSV file", http.StatusInternalServerError)

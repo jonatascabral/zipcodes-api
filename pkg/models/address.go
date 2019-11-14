@@ -6,6 +6,7 @@ type Address struct {
 	gorm.Model
 	Code string
 	Address string
+	District string
 	Number string
 	City string
 	State string
@@ -15,6 +16,7 @@ type Address struct {
 func (z Address) New(
 	code string,
 	address string,
+	district string,
 	number string,
 	city string,
 	state string,
@@ -23,6 +25,7 @@ func (z Address) New(
 		Code: code,
 		Address: address,
 		Number: number,
+		District: district,
 		City: city,
 		State: state,
 		Country: country}
