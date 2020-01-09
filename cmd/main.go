@@ -5,6 +5,7 @@ import (
 	"github.com/jonatascabral/zipcodes-api/pkg/rabbitmq"
 	"github.com/jonatascabral/zipcodes-api/pkg/routes"
 	"github.com/jonatascabral/zipcodes-api/pkg/services"
+	"github.com/labstack/echo"
 	"log"
 )
 
@@ -17,11 +18,13 @@ func main() {
 	log.Println("Connecting to rabbit")
 	rabbitmq.Init()
 
+	e := echo.New()
+
 	log.Println("Loading application routes")
-	routes.LoadRoutes()
+	routes.LoadRoutes(e)
 
 	log.Println("Starting server at :9080")
-	services.StartServer(":9080")
+	services.StartServer(e, ":9080")
 }
 
 

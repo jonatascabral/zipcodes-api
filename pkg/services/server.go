@@ -1,7 +1,9 @@
 package services
 
-import "net/http"
+import (
+	"github.com/labstack/echo"
+)
 
-func StartServer(port string) error {
-	return http.ListenAndServe(port, nil)
+func StartServer(e *echo.Echo, port string) {
+	e.Logger.Fatal(e.Start(port))
 }

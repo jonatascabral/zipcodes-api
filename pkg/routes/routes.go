@@ -2,10 +2,10 @@ package routes
 
 import (
 	"github.com/jonatascabral/zipcodes-api/pkg/controllers"
-	"net/http"
+	"github.com/labstack/echo"
 )
 
-func LoadRoutes() {
-	http.HandleFunc("/", controllers.Ping)
-	http.HandleFunc("/import/csv", controllers.ImportCsv)
+func LoadRoutes(e *echo.Echo) {
+	e.GET("/", controllers.Ping)
+	e.POST("/import/csv", controllers.ImportCsv)
 }
