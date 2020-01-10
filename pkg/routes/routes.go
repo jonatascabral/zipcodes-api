@@ -1,11 +1,12 @@
 package routes
 
 import (
+	"github.com/gin-gonic/gin"
 	"github.com/jonatascabral/zipcodes-api/pkg/controllers"
-	"github.com/labstack/echo"
 )
 
-func LoadRoutes(e *echo.Echo) {
-	e.GET("/", controllers.Ping)
-	e.POST("/import/csv", controllers.ImportCsv)
+func LoadRoutes(request *gin.Engine) {
+	request.GET("/", controllers.Ping)
+
+	request.POST("/import/csv", controllers.ImportCsv)
 }

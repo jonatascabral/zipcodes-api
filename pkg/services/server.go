@@ -1,9 +1,9 @@
 package services
 
 import (
-	"github.com/labstack/echo"
+	"github.com/gin-gonic/gin"
 )
 
-func StartServer(e *echo.Echo, port string) {
-	e.Logger.Fatal(e.Start(port))
+func StartServer(e *gin.Engine, port string) {
+	e.Run(port)
 }

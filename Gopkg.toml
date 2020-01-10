@@ -35,4 +35,8 @@
 
 [[constraint]]
   name = "github.com/labstack/echo"
-  version = "4.1.13"
+  version = "3.1.0"
+
+[[constraint]]
+  name = "github.com/gin-gonic/gin"
+  version = "1.5.0"

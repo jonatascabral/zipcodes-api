@@ -1,11 +1,11 @@
 package main
 
 import (
+	"github.com/gin-gonic/gin"
 	"github.com/jonatascabral/zipcodes-api/pkg/database"
 	"github.com/jonatascabral/zipcodes-api/pkg/rabbitmq"
 	"github.com/jonatascabral/zipcodes-api/pkg/routes"
 	"github.com/jonatascabral/zipcodes-api/pkg/services"
-	"github.com/labstack/echo"
 	"log"
 )
 
@@ -18,13 +18,13 @@ func main() {
 	log.Println("Connecting to rabbit")
 	rabbitmq.Init()
 
-	e := echo.New()
+	request := gin.Default()
 
 	log.Println("Loading application routes")
-	routes.LoadRoutes(e)
+	routes.LoadRoutes(request)
 
 	log.Println("Starting server at :9080")
-	services.StartServer(e, ":9080")
+	services.StartServer(request, ":9080")
 }
 
 
